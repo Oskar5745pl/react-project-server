@@ -1,0 +1,171 @@
+export default [
+    {
+      "name": "Bestseller Bundle",
+      "min-price": 50.0,
+      "products": [
+        {
+          "name": "Bestseller Bundle - Starter Pack",
+          "price": 50.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Bestseller Bundle - Starter Pack"
+        },
+        {
+          "name": "Bestseller Bundle - Advanced Pack",
+          "price": 75.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Bestseller Bundle - Advanced Pack"
+        }
+      ],
+      "description": "Bestseller Bundles contain a selection of our most popular products.",
+      "overview": "Overview of Bestseller Bundles",
+      "details": "Details about Bestseller Bundles"
+    },
+    {
+      "name": "Instant Meals",
+      "min-price": 3.0,
+      "products": [
+        {
+          "name": "Instant Meal - Tomato Soup",
+          "price": 3.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Tomato Soup Instant Meal"
+        },
+        {
+          "name": "Instant Meal - Chicken Noodle Soup",
+          "price": 3.5,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Chicken Noodle Soup Instant Meal"
+        }
+      ],
+      "description": "Instant Meals are quick and easy meals that can be prepared in minutes.",
+      "overview": "Overview of Instant Meals",
+      "details": "Details about Instant Meals"
+    },
+    {
+      "name": "Ready to drink Meal",
+      "min-price": 4.0,
+      "products": [
+        {
+          "name": "Ready-to-Drink Meal - Vanilla",
+          "price": 4.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Vanilla Ready-to-Drink Meal"
+        },
+        {
+          "name": "Ready-to-Drink Meal - Chocolate",
+          "price": 4.5,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Chocolate Ready-to-Drink Meal"
+        }
+      ],
+      "description": "Ready-to-Drink Meals are convenient meal replacements available in various flavors.",
+      "overview": "Overview of Ready-to-Drink Meals",
+      "details": "Details about Ready-to-Drink Meals"
+    },
+    {
+      "name": "Daily A-Z Vitamins",
+      "min-price": 10.0,
+      "products": [
+        {
+          "name": "Vitamin A Supplement",
+          "price": 10.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Vitamin A Supplement"
+        },
+        {
+          "name": "Vitamin C Supplement",
+          "price": 12.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Vitamin C Supplement"
+        }
+      ],
+      "description": "Daily A-Z Vitamins provide essential vitamins and minerals for overall health.",
+      "overview": "Overview of Daily A-Z Vitamins",
+      "details": "Details about Daily A-Z Vitamins"
+    },
+    {
+      "name": "Complete Nutrition Bar",
+      "min-price": 5.0,
+      "products": [
+        {
+          "name": "Complete Nutrition Bar - Chocolate Chip",
+          "price": 5.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Chocolate Chip Complete Nutrition Bar"
+        },
+        {
+          "name": "Complete Nutrition Bar - Peanut Butter",
+          "price": 6.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Peanut Butter Complete Nutrition Bar"
+        }
+      ],
+      "description": "Complete Nutrition Bars are convenient snacks packed with essential nutrients.",
+      "overview": "Overview of Complete Nutrition Bars",
+      "details": "Details about Complete Nutrition Bars"
+    },
+    {
+      "name": "Daily Greens",
+      "min-price": 8.0,
+      "products": [
+        {
+          "name": "Green Smoothie Blend",
+          "price": 8.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Green Smoothie Blend"
+        },
+        {
+          "name": "Green Juice Shot",
+          "price": 10.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Green Juice Shot"
+        }
+      ],
+      "description": "Daily Greens offer a convenient way to get your daily dose of greens.",
+      "overview": "Overview of Daily Greens",
+      "details": "Details about Daily Greens"
+    },
+    {
+      "name": "Accessories",
+      "min-price": 5.0,
+      "products": [
+        {
+          "name": "Shaker Bottle",
+          "price": 5.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Shaker Bottle"
+        },
+        {
+          "name": "Blender",
+          "price": 20.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Blender"
+        }
+      ],
+      "description": "Accessories enhance your Huel experience with convenient tools.",
+      "overview": "Overview of Accessories",
+      "details": "Details about Accessories"
+    },
+    {
+      "name": "Huel Powder",
+      "min-price": 25.0,
+      "products": [
+        {
+          "name": "Huel Powder - Vanilla",
+          "price": 25.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Vanilla Huel Powder"
+        },
+        {
+          "name": "Huel Powder - Chocolate",
+          "price": 25.0,
+          "quantity": 1,
+          "nutrition": "Nutritional information for Chocolate Huel Powder"
+        }
+      ],
+      "description": "Huel Powder is a nutritionally complete powdered food.",
+      "overview": "Overview of Huel Powder",
+      "details": "Details about Huel Powder"
+    }
+  ]
+}
