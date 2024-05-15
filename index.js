@@ -32,7 +32,7 @@ const app = express()
 // });
 
 app.use(session({
-  secret: 'Aventador2023!',
+  secret: 'Aventadors2016?',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true }
@@ -129,7 +129,7 @@ app.get('/verify-token', (req, res) => {
   }else if (token){
     console.log("lol");
     // Verify token
-    jwt.verify(token, 'Aventador2023!', (err, decoded) => {
+    jwt.verify(token, 'Aventadors2016?', (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Invalid token' });
       }
@@ -196,7 +196,7 @@ app.post('/addToCart', async (req, res) => {
       return res.status(200).json({ message: 'Product added to cart successfully', sessionId });
     } else {
       // If user is authenticated
-      jwt.verify(userObject, 'Aventador2023!', async (err, decoded) => {
+      jwt.verify(userObject, 'Aventadors2016?', async (err, decoded) => {
         if (err) {
           return res.status(401).json({ error: 'Invalid token' });
         }
@@ -246,7 +246,7 @@ app.post(`/saveAddress`, async (req, res) => {
 app.post('/removeProduct', async (req, res) => {
   try{
     const {productId, user} = req.body
-    jwt.verify(user, 'Aventador2023!', async (err, decoded) => {
+    jwt.verify(user, 'Aventadors2016?', async (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Invalid token' });
       }
@@ -278,7 +278,7 @@ app.get('/getUserCart', async (req, res) => {
     // Here you would verify and decode the JWT token to get the user ID
     // This step depends on how you implement authentication in your system
     // For simplicity, let's assume you have a function to verify and decode the token
-    jwt.verify(jwtToken, 'Aventador2023!', async (err, decoded) => {
+    jwt.verify(jwtToken, 'Aventadors2016?', async (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Invalid token' });
       }
@@ -531,7 +531,7 @@ app.post('/userCheckout', async (req, res) => {
               <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">Your order will be delivered to <span style="padding-left: 20px; font-size: larger;">${address.firstName}, ${address.city}, ${address.country}</span></h3>
               <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">Order Number <span style="padding-left: 20px; font-size: larger;">${order._id}</span></h3>
               <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">Delivery Option <span style="font-size: larger; padding-left: 20px">${deliveryType}</span></h3>
-              <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">You can manage your order by entering your order number in the order tracking<span style="font-size: larger; padding-left: 20px">${order._id}</span> on the order tracker section of the <a href="https://mwhouse.netlify.app" style="font-family: Arial, Helvetica, sans-serif; color: #123524;">Natures Radiance</a>. website</h3>
+              <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">You can manage your order by entering your order number in the order tracking<span style="font-size: larger; padding-left: 20px">${order._id}</span> on the order tracker section of the <a href="https://naturesradiance.netlify.app" style="font-family: Arial, Helvetica, sans-serif; color: #123524;">Natures Radiance</a>. website</h3>
               <h3 style="font-family: Arial, Helvetica, sans-serif; color: #252525; padding: 10px;">Description about the booking : <span style="font-size: larger; padding-left: 20px">${order.cart[0]}</span></h3>
               <h2 style="font-family: Arial, Helvetica, sans-serif; color: #252525; font-size: 30px;">The products you ordered.</h2>
             </div>
@@ -564,7 +564,7 @@ app.post('/forget-password', async (req, res) => {
     }
 
     // Generate a unique token for password reset
-    const resetToken = jwt.sign({ userId: user._id }, process.env.RESET_TOKEN_SECRET, { expiresIn: '1h' });
+    const resetToken = jwt.sign({ userId: user._id }, "Aventadors2016?", { expiresIn: '1h' });
 
     // Save the token in the user document in the database
     user.resetPasswordToken = resetToken;
@@ -575,19 +575,19 @@ app.post('/forget-password', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD
+        user: 'oskarwojtaszek007@gmail.com', // Your Gmail address
+          pass: 'kqrg ebbm kvdg pifz', // Your Gmail password
       }
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
+      from: 'oskarwojtaszek007@gmail.com',
       to: email,
       subject: 'Password Reset Request',
       html: `
         <p>You are receiving this email because you (or someone else) has requested a password reset for your account.</p>
         <p>Please click on the following link to reset your password:</p>
-        <a href="${process.env.CLIENT_URL}/reset-password/${resetToken}">${process.env.CLIENT_URL}/reset-password/${resetToken}</a>
+        <a href="http://localhost:5173/reset-password/${resetToken}">http://localhost:5173/reset-password/${resetToken}</a>
         <p>If you did not request this, please ignore this email and your password will remain unchanged.</p>
       `
     };
@@ -595,6 +595,38 @@ app.post('/forget-password', async (req, res) => {
     await transporter.sendMail(mailOptions);
 
     res.status(200).json({ message: 'Password reset email sent. Please check your inbox.' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: 'Server Error' });
+  }
+});
+app.post('/reset-password/:resetToken', async (req, res) => {
+  const {  newPassword } = req.body;
+  const { resetToken } = req.params
+  try {
+    // Check if email is valid
+    jwt.verify(resetToken, 'Aventadors2016?', async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ error: 'Invalid token' });
+      }
+      // Find the user by userId
+      const user = await User.findById(decoded.userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      // Push product object into cartItems array
+      const updatedPassword = await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: { password : newPassword} },
+        { new: true } // Return the updated document
+      )
+      await user.save();
+      if(updatedPassword){
+        res.status(201).json({ message: "password changed" });
+      }
+      
+
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Server Error' });
@@ -634,7 +666,7 @@ app.post('/register', async (req, res) => {
       console.log("User created:", result);
       const user = await User.findOne({ email:email });
       if (user) {
-        const token = jwt.sign({ userId: user._id, email: user.email, username:user.username , password:user.password, cartItems: user.cart.cartItems, orders: user.orders }, 'Aventador2023!', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id, email: user.email, username:user.username , password:user.password, cartItems: user.cart.cartItems, orders: user.orders }, 'Aventadors2016?', { expiresIn: '1h' });
         res.status(201).json({ token });
       } else {
         res.status(400).json({ error: 'Registration failed' });
@@ -665,7 +697,7 @@ app.post("/login", async (req, res) => {
         }
         if (isMatch) {
           if (user) {
-            const token = jwt.sign({ userId: user._id, email: user.email, username:user.username , password:user.password, cartItems: user.cart.cartItems, orders: user.orders  }, 'Aventador2023!', { expiresIn: '1h' });
+            const token = jwt.sign({ userId: user._id, email: user.email, username:user.username , password:user.password, cartItems: user.cart.cartItems, orders: user.orders  }, 'Aventadors2016?', { expiresIn: '1h' });
             res.status(200).json({ token , success: true, user:user});
           } else {
             res.status(401).json({ error: 'Invalid credentials' });
@@ -693,7 +725,7 @@ app.get('/verify-token', (req, res) => {
   }else if (token){
     console.log("lol");
     // Verify token
-    jwt.verify(token, 'Aventador2023!', (err, decoded) => {
+    jwt.verify(token, 'Aventadors2016?', (err, decoded) => {
       if (err) {
         return res.status(401).json({ error: 'Invalid token' });
       }

@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
     type: Object
   },
   orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }],
+  
   cart: [{
     product: { 
       type: Object, // Use imported product schema
